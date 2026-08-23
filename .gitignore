@@ -1,0 +1,22 @@
+# Environment & Secrets (Paling Penting!)
+.env
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest & Test Reports Cache
+.pytest_cache/
+report.html
+playwright-report/
+test-results/
+
+# IDE settings
+.vscode/
+.idea/
