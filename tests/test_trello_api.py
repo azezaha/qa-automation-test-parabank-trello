@@ -4,7 +4,6 @@ import pytest
 from dotenv import load_dotenv
 from jsonschema import validate
 
-# Membaca API Key dan Token dari file .env
 load_dotenv()
 
 BASE_URL = "https://api.trello.com/1"
@@ -16,7 +15,6 @@ AUTH_PARAMS = {
     "token": TOKEN
 }
 
-# 1. Schema Definition (JSON Schema Validation)
 BOARD_SCHEMA = {
     "type": "object",
     "properties": {
@@ -28,10 +26,9 @@ BOARD_SCHEMA = {
     "required": ["id", "name", "closed"]
 }
 
-# --- FIXTURE: SETUP & TEARDOWN BOARD OTOMATIS ---
+
 @pytest.fixture(scope="module")
 def created_board():
-    # Setup: Buat Board Baru
     url = f"{BASE_URL}/boards/"
     params = {**AUTH_PARAMS, "name": "QA_Automation_Board_Test"}
     response = requests.post(url, params=params)
@@ -41,12 +38,9 @@ def created_board():
 
     yield board_data
 
-    # Teardown: Hapus Board Setelah Semua Tes Selesai (Clean up)
     delete_url = f"{BASE_URL}/boards/{board_id}"
     requests.delete(delete_url, params=AUTH_PARAMS)
 
-
-# --- TEST SUITE (Positive, Negative, Schema, Performance) ---
 
 def test_get_board_positive_schema_and_performance(created_board):
     """Positive Flow: Validasi Status 200, Data Value, JSON Schema, & Response Time < 1000ms"""

@@ -81,3 +81,12 @@ Test runs automatically capture Playwright traces in `trace.zip`. To inspect tra
 ```bash
 playwright show-trace trace.zip
 ```
+
+## 🔍 Debugging with Playwright Trace Viewer
+
+Playwright provides a built-in Trace Viewer GUI to inspect DOM snapshots, network requests, console logs, and action timelines during test execution.
+
+### How to View Traces:
+1. Run tests with tracing enabled:
+   ```bash
+   pytest --tracing=on

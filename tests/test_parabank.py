@@ -5,8 +5,6 @@ from pages.account_page import AccountPage
 
 scenarios("../features/parabank.feature")
 
-# --- GIVEN STEPS ---
-
 @given("I open the ParaBank home page")
 def open_parabank_home(page):
     login_page = LoginPage(page)
@@ -22,7 +20,6 @@ def login_to_portal(page):
     account_page.verify_accounts_page()
     return account_page
 
-# --- WHEN STEPS ---
 
 @when("I submit valid username and password")
 def submit_valid_credentials(page):
@@ -55,8 +52,6 @@ def step_apply_loan(page):
 @when("I click on the Log Out link")
 def click_logout_link(page):
     AccountPage(page).logout()
-
-# --- THEN STEPS ---
 
 @then("I should be redirected to the Accounts Overview page")
 def verify_overview(page):
